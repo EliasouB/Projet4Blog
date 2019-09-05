@@ -1,4 +1,4 @@
-#Projet 4 Blog
+PROJET 4 :  BLOG
 
 Vous venez de décrocher un contrat avec Jean Forteroche, acteur et écrivain. Il travaille actuellement sur son prochain roman, "Billet simple pour l'Alaska". Il souhaite innover et le publier par épisode en ligne sur son propre site.
 
