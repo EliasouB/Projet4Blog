@@ -19,6 +19,14 @@ class CommentManager
         return $affectedLines;
     }
 
+    public function deleteComment($commentId) {
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare('DELETE FROM comments WHERE id = ?');
+        $deletedComment = $req->execute(array($commentId));
+        
+        return $deletedComment;
+    }
+
     private function dbConnect()
     {
         $db = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', 'root');
