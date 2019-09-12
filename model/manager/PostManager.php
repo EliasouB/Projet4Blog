@@ -1,5 +1,8 @@
 <?php
-class PostManager
+
+require_once("Manager.php");
+
+class PostManager extends Manager
 {
     public function getPosts()
     {
@@ -19,10 +22,4 @@ class PostManager
         return $post;
     }
 
-
-    private function dbConnect()
-    {
-        $db = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', 'root');
-        return $db;
-    }
 }
