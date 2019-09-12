@@ -1,5 +1,8 @@
 <?php
-class CommentManager
+
+require_once("Manager.php");
+
+class CommentManager extends Manager
 {
     public function getComments($postId)
     {
@@ -25,11 +28,5 @@ class CommentManager
         $deletedComment = $req->execute(array($commentId));
 
         return $deletedComment;
-    }
-
-    private function dbConnect()
-    {
-        $db = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', 'root');
-        return $db;
     }
 }
