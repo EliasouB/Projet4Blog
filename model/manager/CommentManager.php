@@ -20,10 +20,10 @@ class CommentManager
     }
 
     public function deleteComment($commentId) {
-        $bdd = $this->dbConnect();
+        $db = $this->dbConnect();
         $req = $bdd->prepare('DELETE FROM comments WHERE id = ?');
         $deletedComment = $req->execute(array($commentId));
-        
+
         return $deletedComment;
     }
 
