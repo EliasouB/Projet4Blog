@@ -37,5 +37,6 @@ try { // On essaie de faire des choses
 }
 catch(Exception $e) { // S'il y a eu une erreur, alors...
     $errorMessage = $e->getMessage();
+    require('view/frontend/errorView.php');
     
 }
