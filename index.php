@@ -18,7 +18,7 @@ try { // On essaie de faire des choses
         elseif ($_GET['action'] == 'addComment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['author']) && !empty($_POST['comment'])) {
-                    addComment($_GET['id'], $_POST['author'], $_POST['comment']);
+                    addComment($_GET['id'], htmlspecialchars(_POST['author']), htmlspecialchars($_POST['comment']));
                 }
                 else {
                     // Autre exception
@@ -37,6 +37,6 @@ try { // On essaie de faire des choses
 }
 catch(Exception $e) { // S'il y a eu une erreur, alors...
     $errorMessage = $e->getMessage();
-    require('view/frontend/errorView.php');
+    require('view/frontend/errorView.phtml');
     
 }
