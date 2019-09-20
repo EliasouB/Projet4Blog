@@ -4,6 +4,7 @@ require_once("Manager.php");
 
 class CommentManager extends Manager
 {
+    // Méthode qui récupère les commentaires d'un Article
     public function getComments($postId)
     {
         $db = $this->dbConnect();
@@ -13,20 +14,14 @@ class CommentManager extends Manager
         return $comments;
     }
 
+    // Méthode qui ajoute un commentaire
     public function postComment($postId, $author, $comment)
     {
         $db = $this->dbConnect();
         $comments = $db->prepare('INSERT INTO comments(post_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())');
-        $affectedLines = $comments->execute(array($postId, $author, $comment));
+        $affectedLines = $comments->execute(array($postId, $author, $comment)); // Ce que l'on a passé en commentaire
 
         return $affectedLines;
     }
 
-    public function deleteComment($commentId) {
-        $db = $this->dbConnect();
-        $req = $bdd->prepare('DELETE FROM comments WHERE id = ?');
-        $deletedComment = $req->execute(array($commentId));
-
-        return $deletedComment;
-    }
 }

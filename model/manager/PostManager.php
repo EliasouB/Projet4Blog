@@ -3,7 +3,8 @@
 require_once("Manager.php");
 
 class PostManager extends Manager
-{
+{ 
+    // Méthode qui récupere tous les ARTICLES
     public function getPosts()
     {
         $db = $this->dbConnect();
@@ -12,6 +13,7 @@ class PostManager extends Manager
         return $req;
     }
 
+    // Méthode qui récupère un ARTICLE
     public function getPost($postId)
     {
         $db = $this->dbConnect();
