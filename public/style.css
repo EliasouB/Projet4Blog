@@ -8,11 +8,14 @@ h3
     color:white;
     font-size:1.2em;
     margin-bottom:0px;
+    border-radius: 25px;
 }
 .news p
 {
-    background-color:#CCCCCC;
+    background-color:#6c757d;
     margin-top:0px;
+    border-radius: 10px;
+    border-color: red;
 }
 .news
 {
@@ -23,9 +26,17 @@ h3
 a
 {
     text-decoration: none;
-    color: blue;
+    color: white;
+    position: relative;
+    left: 20px;
+
 }
 em
 {
     font-size: 0.9em;
+}
+p
+{
+    color: white;
+    font-family: 
 }

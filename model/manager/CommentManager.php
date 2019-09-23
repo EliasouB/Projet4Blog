@@ -4,7 +4,7 @@ require_once("Manager.php");
 
 class CommentManager extends Manager
 {
-    // Méthode qui récupère les commentaires d'un Article
+    // Méthode qui récupère les commentaires d'un Post
     public function getComments($postId)
     {
         $db = $this->dbConnect();

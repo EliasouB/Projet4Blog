@@ -23,7 +23,6 @@ function post()
     $postObject->setId($post['id']);
     $postObject->setTitle($post['title']);
     $postObject->setContent($post['content']);
-    $postObject->setCreationDate($post['creation_date']);
     $comments = $commentManager->getComments($_GET['id']);
 
     require('view/frontend/postView.phtml');
