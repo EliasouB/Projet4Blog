@@ -5,7 +5,7 @@ h1, h3
 h3
 {
     background-color:black;
-    color:black;
+    color:#28a745;
     font-size:1.2em;
     margin-bottom:0px;
     border-radius: 25px;
@@ -28,7 +28,7 @@ a
     text-decoration: none;
     position: relative;
     left: 20px;
-
+    color: black;
 }
 em
 {
@@ -36,5 +36,10 @@ em
 }
 p
 {
-    color: red;
+    color: white;
+}
+.comments, .author
+{
+    color: black;
+    text-align: center;
 }
