@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="public/page.css">
+    <link rel="stylesheet" href="public/style.css">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
@@ -55,7 +55,7 @@
 
 <?php ob_start(); ?>
 <h1>Mon super blog !</h1>
-<p><a href="index.php">Retour à la liste des billets</a></p>
+<p class="retour"><a href="index.php">Retour à la liste des billets</a></p>
 
 <div class="news">
     <h3>
@@ -67,22 +67,6 @@
         <?= nl2br(htmlspecialchars($post['content'])) ?>
     </p>
 </div>
-
-
-
-<?php
-while ($comment = $comments->fetch())
-{
-?>
-    <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
-    <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
-<?php
-}
-?>
-<?php $content = ob_get_clean(); ?>
-
-<?php require('template.php'); ?>
-
 
 <!-- Dans cette vue, on affiche le billet (récupéré avec $post ) et les commentaires (récupérés dans$comments ). -->
 
@@ -105,15 +89,28 @@ while ($comment = $comments->fetch())
 </form>
 
 
+<?php
+while ($comment = $comments->fetch())
+{
+?>
+    <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
+    <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+<?php
+}
+?>
+<?php $content = ob_get_clean(); ?>
+
+<?php require('template.php'); ?>
+
 <!-- ... -->
 
 
 <!-- Begin page content -->
 <main role="main" class="flex-shrink-0">
   <div class="container">
-    <h1 class="mt-5">Articles de<strong>"Billet simple pour l'Alaska"</strong></h1>
+    <h1 class="mt-5"><strong>Billet simple pour l'Alaska</strong></h1>
 
-    <h1>Article : <?=$post["id"] ; ?></h1>
+    
   
 
   </div>
