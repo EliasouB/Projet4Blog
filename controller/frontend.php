@@ -4,6 +4,7 @@
 require_once('model/manager/PostManager.php');
 require_once('model/manager/CommentManager.php');
 require_once('model/entity/Post.php');
+require_once('model/manager/AdminManager.php');
 
 function listPosts()
 {
@@ -42,7 +43,14 @@ function addComment($postId, $author, $comment)
     }
 }
 
-function error($e)
+function reportComment($commentId)
 {
-    require('view/frontend/errorView.php');
+    $commentManager = new CommentManager();
+    $affectedLines = $commentManager->postReport($commentId);
+    if ($affectedLines === false) {
+        throw new Exception('Impossible de signaler le commentaire !');
+    }
+    else {
+        header('Location: index.php?action=post&id=' . $postId);
+    }
 }

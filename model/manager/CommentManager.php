@@ -24,4 +24,13 @@ class CommentManager extends Manager
         return $affectedLines;
     }
 
+    // Méthode qui ajoute le signalement d'un commentaire
+    public function postReport($commentId)
+    {
+        $db = $this->dbConnect();
+        $comments = $db->prepare('INSERT INTO report(comment_id, reporting_date) VALUES(?, NOW())');
+        $affectedLines = $comments->execute(array($commentId));
+        return $affectedLines;
+    }
+
 }
