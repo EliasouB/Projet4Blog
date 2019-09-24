@@ -20,12 +20,10 @@ try { // On essaie de faire des choses
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['author']) && !empty($_POST['comment'])) {
                     addComment($_GET['id'], htmlspecialchars($_POST['author']), htmlspecialchars($_POST['comment']));
-                    require('view/frontend/errorView.phtml');
                 }
                 else {
                     // Autre exception
                     throw new Exception('Tous les champs ne sont pas remplis !');
-
                 }
             }
             else {
