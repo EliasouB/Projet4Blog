@@ -2,8 +2,16 @@
 
 require_once("Manager.php");
 
-class AdminManager
+class AdminManager extends Manager
 {
+
+    public function getLogin($login)
+    {
+        $bdd = $this->dbConnect();
+        $req= $bdd->prepare('SELECT * FROM users WHERE login = : login');
+        $req->execute(array('login' => $login));$loginAdmin = $req->fetch();
+        return $loginAdmin;
+    }
 
     public function updatePost($title, $content, $postId) 
     {
