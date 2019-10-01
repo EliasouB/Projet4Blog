@@ -16,7 +16,7 @@ class AdminManager extends Manager
     public function updatePost($title, $content, $postId) 
     {
         $bdd = $this->dbConnect();
-        $req = $bdd->prepare('UPDATE posts SET title = ?, content = ?, update_date = NOW() WHERE id = ?');
+        $req = $bdd->prepare('UPDATE chapters SET title = :titre, content = :content, update_date = NOW() WHERE id = ?');
         $updated = $req->execute(array($title, $content, $postId));
         return $updated;
     }
@@ -24,13 +24,13 @@ class AdminManager extends Manager
     public function createPost() 
     {
         $bdd = $this->dbConnect();
-        $req = $bdd->prepare('INSERT INTO posts(title, content, creation_date, update_date) VALUES (?, ?, NOW()');
+        $req = $bdd->prepare('INSERT INTO chapters(title, content, creation_date) VALUES (?, ?, NOW()');
         $newPost = $req->execute(array());
         return $newPost;
     }
     public function deletePost($postId) {
         $bdd = $this->dbConnect();
-        $req = $bdd->prepare('DELETE FROM posts WHERE id = ?');
+        $req = $bdd->prepare('DELETE FROM chapters WHERE id = ?');
         $deletedPost = $req->execute(array($postId));
         return $deletedPost;
     }

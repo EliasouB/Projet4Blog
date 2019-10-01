@@ -35,13 +35,39 @@
           <a class="nav-link" href="index.php">Accueil<span class="sr-only">(current)</span></a>
         </li>
       </ul>
-      <form class="form-inline mt-2 mt-md-0" action="adminIndex.phtml" method="POST">
+      <?php 
+              if (!isset($_SESSION{'login'}))
+              { ?>
+      <form class="form-inline mt-2 mt-md-0" action="" method="POST">
+        <?php if(isset($_SESSION{'message'})){ ?>
+        <div class="form-control" ><?= $_SESSION['message'] ?></div>
+        <?php } ?>
        <input class="form-control mr-sm-2" type="text" placeholder="Identifiant" id="username" name="username">
        <input class="form-control mr-sm-2" type="password" placeholder="Mot de passe" id="password" name="password">
         
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Connexion</button>
       </form>
-    </div>
+      </div>
+      <? php 
+        }
+
+    else { ?>
+       
+        <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.php">Administration<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="index.php">Déconnexion<span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <?php
+      }
+      ?>
+
+
+
+  
 
   </nav>
 </header>
