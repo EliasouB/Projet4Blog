@@ -48,7 +48,7 @@
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Connexion</button>
       </form>
       </div>
-      <? php 
+      <?php 
         }
 
     else { ?>
