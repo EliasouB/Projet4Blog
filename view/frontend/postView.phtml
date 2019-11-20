@@ -45,6 +45,8 @@ while ($comment = $comments->fetch())
     <p class="author"><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
     <p class="comments"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
 
+<button type="button" class="btn btn-warning">Signaler</button>
+
 <?php
 }
 ?>

@@ -9,7 +9,8 @@ class AdminManager extends Manager
     {
         $bdd = $this->dbConnect();
         $req= $bdd->prepare('SELECT * FROM users WHERE login = : login');
-        $req->execute(array('login' => $login));$loginAdmin = $req->fetch();
+        $req->execute(array('login' => $login));
+        $loginAdmin = $req->fetch();
         return $loginAdmin;
     }
 

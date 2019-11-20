@@ -9,5 +9,7 @@ require_once('model/manager/AdminManager.php');
 function login()
 {
 	
-	
+	$adminManager = new AdminManager();
+	$login = $adminManager->getLogin();
+	require('view/backend/adminIndex.phtml');
 }

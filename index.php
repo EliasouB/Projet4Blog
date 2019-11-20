@@ -1,4 +1,5 @@
 <?php
+session_start();
 require('controller/frontend.php');
 require('controller/backend.php');
 
@@ -23,7 +24,7 @@ try { // On essaie de faire des choses
                 }
                 else {
                     // Autre exception
-                    throw new Exception('Tous les champs ne sont pas remplis !');
+                    throw new Exception(' Tous les champs ne sont pas remplis !');
                 }
             }
             else {
