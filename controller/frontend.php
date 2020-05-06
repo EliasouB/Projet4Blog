@@ -46,11 +46,12 @@ function addComment($postId, $author, $comment)
 function reportComment($commentId)
 {
     $commentManager = new CommentManager();
+    // TODO recuperer postId à partir du commentaire en base de données
     $affectedLines = $commentManager->postReport($commentId);
     if ($affectedLines === false) {
         throw new Exception('Impossible de signaler le commentaire !');
     }
-    else {
-        header('Location: index.php?action=post&id=' . $postId);
+    else {throw new Exception('Commentaire signalé !');
+        header('Location: index.php?action=post&id=' . $commentId);
     }
 }

@@ -38,9 +38,9 @@
       <?php 
               if (!isset($_SESSION{'login'}))
               { ?>
-      <form class="form-inline mt-2 mt-md-0" action="" method="POST">
+      <form class="form-inline mt-2 mt-md-0" action="index.php?action=login" method="POST">
         <?php if(isset($_SESSION{'message'})){ ?>
-        <div class="form-control" ><?= $_SESSION['message'] ?></div>
+        <div class="form-control" ><p class="red"><?= $_SESSION['message'] ?></div>
         <?php } ?>
        <input class="form-control mr-sm-2" type="text" placeholder="Identifiant" id="username" name="username">
        <input class="form-control mr-sm-2" type="password" placeholder="Mot de passe" id="password" name="password">

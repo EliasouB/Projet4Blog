@@ -4,8 +4,22 @@ require('controller/frontend.php');
 require('controller/backend.php');
 
 try { // On essaie de faire des choses
+
     if (isset($_GET['action'])) {
-        if ($_GET['action'] == 'listPosts') {
+        if($_GET['action'] == 'login'){
+                login();
+        }
+        elseif($_GET['action'] == 'logout'){
+                logout();
+        }
+        elseif($_GET['action'] == 'updatePost'){
+                updatePost();   
+        }
+        elseif($_GET['action'] == 'createPost'){
+                createPost();       
+        }
+
+        elseif ($_GET['action'] == 'listPosts') {
             listPosts();
         }
         elseif ($_GET['action'] == 'post') {

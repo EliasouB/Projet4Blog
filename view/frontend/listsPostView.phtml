@@ -18,7 +18,7 @@ while ($data = $posts->fetch())
 ?>
     <div class="news">
         <h3>
-            <?= htmlspecialchars($data['title']) ?>
+            <?= $data['title'] ?>
             <em>le : <?= $data['creation_date_fr'] ?></em>
         </h3>
         
@@ -27,11 +27,11 @@ while ($data = $posts->fetch())
             {...}
             <br />
             <div class="suite"><em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>" method="post">Suite</a></em></div>
-        </p>
+        </p>        
     </div>
 <?php
 }
-$posts->closeCursor();
+$posts->closeCursor(); // on libère le curseur pour la prochaine requête
 ?>
 <?php $content = ob_get_clean(); ?>
 
