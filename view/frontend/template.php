@@ -55,10 +55,10 @@
        
         <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="index.php">Administration<span class="sr-only">(current)</span></a>
+          <a href="index.php?action=admin"><button type="button" class="btn btn-secondary">Panneau d'administration</button></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="index.php">Déconnexion<span class="sr-only">(current)</span></a>
+            <a href="index.php?action=logout"><button type="button" class="btn btn-xs btn-primary">Déconnexion</button></a>
         </li>
       </ul>
       <?php

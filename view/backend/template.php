@@ -42,8 +42,10 @@
     </div>
     <?php else : ?>
             <ul class="nav navbar-right navbar-nav">
-              <li><a href="index.php"><button class="btn btn-xs btn-info">Accéder au Blog</button></a></li>
-              <li><a href="index.php?admin=logout"><button class="btn btn-xs btn-primary">Déconnexion</button></a></li>
+              <li><a href="index.php"><button class="btn btn-xs btn-info">Aperçu Blog</button></a></li>
+              <li><a href="index.php?action=createPost"><button type="button" class="btn btn-secondary">Créer un chapitre</button></a></li>
+              <li><a href=""><button type="button" class="btn btn-success">Voir Chapitres</button></a></li>
+              <li><a href="index.php?action=logout"><button class="btn btn-xs btn-primary">Déconnexion</button></a></li>
               </ul>
           <?php endif; ?>
   </nav>

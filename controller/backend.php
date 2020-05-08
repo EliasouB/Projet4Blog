@@ -15,8 +15,6 @@ function checkAuthentification()
     
   }
 }
-
-
 function login()
 {
 	 if(isset($_POST['password']) && isset($_POST['username']) && $_POST['username'] != '' && $_POST['password'] != '') {
@@ -48,24 +46,43 @@ function login()
         $_SESSION['message'] = 'Vous devez remplir tous les champs';
     
     }
-    header('Location: index.php');
+    header('Location: index.php?action=admin');
 }
 
 
-function updatePost(){
+function changePost($title, $content, $postId){
     checkAuthentification();
-    require('view/backend/updatePostView.phtml');
-}
+    $adminManager= new AdminManager();
+    $affectedlines = $adminManager->updatePost($title, $content, $postId);
 
-function createPost($title, $content){
+    Header('Location: index.php?action=admin');
+}
+function createPost(){
     checkAuthentification();
     require('view/backend/createPostView.phtml');
 }
 
+function setDeletePost($postId)
+{
+    checkAuthentification();
+    $adminManager= new AdminManager();
+    $affectedlines = $adminManager->deletePost($postId);
 
+    if ($affectedLines === false) {
+        throw new Exception('Impossible de supprimer le commentaire !');
+    }
+    else {
+        header('Location: index.php?action=admin');
+    }
+}
+function adminIndex()
+{
+    require('view/backend/adminIndex.phtml');
+}
 
 function logout()
 {
     $_SESSION = array();
     session_destroy();
+    header('Location: index.php');
 }  

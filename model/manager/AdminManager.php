@@ -17,12 +17,12 @@ class AdminManager extends Manager
     public function updatePost($title, $content, $postId) 
     {
         $bdd = $this->dbConnect();
-        $req = $bdd->prepare('UPDATE chapters SET title = :titre, content = :content, creation_date = NOW() WHERE id = ?');
+        $req = $bdd->prepare('UPDATE chapters SET title = ?, content = ?, creation_date = NOW() WHERE id = ?');
         $updated = $req->execute(array($title, $content, $postId));
         return $updated;
     }
 
-    public function createPost($title, $content) 
+    public function setCreatePost($title, $content) 
     {
         $bdd = $this->dbConnect();
         $req = $bdd->prepare('INSERT INTO chapters(title, content, creation_date) VALUES (?, ?, NOW()');

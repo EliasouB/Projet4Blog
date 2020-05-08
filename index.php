@@ -16,9 +16,21 @@ try { // On essaie de faire des choses
                 updatePost();   
         }
         elseif($_GET['action'] == 'createPost'){
-                createPost();       
+                CreatePost();       
         }
-
+        elseif($_GET['action'] == 'deletePost'){
+                setDeletePost();       
+        }
+        elseif ($_GET['action'] == 'updatePost') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                if (isset($_SESSION) && $_SESSION['message'] == '1') {
+                     changePost();
+                }  
+            }    
+        }
+        elseif ($_GET['action'] == 'admin'){
+                adminIndex();       
+        }
         elseif ($_GET['action'] == 'listPosts') {
             listPosts();
         }

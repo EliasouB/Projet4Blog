@@ -4,32 +4,19 @@ $title = "Modifier chapitre"; ?>
 <?php ob_start(); ?>
 
 <section id="createPost">
-		<table class="table table-dark table-striped">
-        <thead>
-          <tr>
-            <th>Nom</th>
-            <th>Prénom</th>
-            <th>Age</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Giraud</td>
-            <td>Pierre</td>
-            <td>28</td>
-          </tr>
-          <tr>
-            <td>Durand</td>
-            <td>Victor</td>
-            <td>26</td>
-          </tr>
-          <tr>
-            <td>Joly</td>
-            <td>Julia</td>
-            <td>27</td>
-          </tr>
-        </tbody>
-      </table>
+	<h1>Panneau d'administration</h1>
+		<div id="managerBlock">
+			<p class="returnLink"><a href="index.php?action=admin">Retour au menu</a></p>
+			<div id="updateBlock">
+				<form action="index.php?action=changePost" method="post">
+					<label for="title">Titre : </label>
+					<input type="text" name="title" id="title" placeholder="Votre titre" size="80" /><br/>
+					<textarea name="content" rows="40" cols="160"></textarea>
+					<input type="submit" value="Poster" />
+				</form>
+			</div>
+		</div>
+		
 </section>
 
 
