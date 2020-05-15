@@ -8,10 +8,30 @@ $title = "Bienvenue sur la partie Administrateur du blog de Jean Forteroche"; ?>
 		<div id="managerBlock">
 			<p class="returnLink"></p>
 			<div id="updateBlock">
-				<h1>Bienvenue sur la partie Administrateur du blog de Jean Forteroche</h1>
-				<div class="alert alert-secondary" role="alert"> Commentaires signalés <a href="#" class="alert-link"></a>
+				<h1>Bienvenue sur la partie Administrateur de votre Blog</h1>
+				<div class="alert alert-warning" role="alert">Commentaires signalés </div>
 				</div>
 			
+<?php
+foreach ($reportComments as $report)
+{
+?>
+
+  <p>
+		    	<span class="red">Signalé le <?= $report['reporting_date'] ?> :</span> 
+		    	<?= $report['comment'] ?> 
+		    	<a href="index.php?action=deleteComment&id=<?= $report['comment_id'] ?>" class="btn btn-small btn-danger" data-toggle="tooltip" title="supprimer">
+		    		<i class="fas fa-trash"></i>
+		    	</a> 
+		    	<a href="index.php?action=deleteReport&id=<?= $report['comment_id'] ?>" class="btn btn-small btn-success" data-toggle="tooltip" title="Autoriser">
+		    		<i class=" fas fa-check"></i>
+		    	</a> 
+		    </p>
+
+<?php
+} ?>
+
+
 			</div>
 		</div>
 </section>

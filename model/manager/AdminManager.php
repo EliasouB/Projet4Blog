@@ -25,7 +25,7 @@ class AdminManager extends Manager
     public function setCreatePost($title, $content) 
     {
         $bdd = $this->dbConnect();
-        $req = $bdd->prepare('INSERT INTO chapters(title, content, creation_date) VALUES (?, ?, NOW()');
+        $req = $bdd->prepare('INSERT INTO chapters(title, content, creation_date) VALUES (?, ?, NOW())');
         $newPost = $req->execute(array($title, $content));
         return $newPost;
     }
@@ -38,8 +38,23 @@ class AdminManager extends Manager
     public function getReportingAdmin()
     {
         $db = $this->dbConnect();
-        $reporting = $db->prepare('SELECT * FROM posts AS p INNER JOIN comments AS c ON c.post_id = p.id INNER JOIN reporting AS r ON c.id = r.comment_id');
+        $reporting = $db->prepare('
+            SELECT * FROM report AS r
+            INNER JOIN comments AS c ON c.id = r.comment_id
+            ');
         $reporting->execute();
-        return $reporting;
+        return $reporting->fetchAll();
+    }
+    public function deleteComment($commentId) {
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare('DELETE FROM comments WHERE id = ?');
+        $deletedComment = $req->execute(array($commentId));
+        return $deletedComment;
+    }
+    public function deleteReports($commentId) {
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare('DELETE FROM report WHERE comment_id = ?');
+        $deletedReport = $req->execute(array($commentId));
+        return $deletedReport;
     }
 }

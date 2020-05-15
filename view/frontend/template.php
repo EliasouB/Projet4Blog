@@ -20,9 +20,9 @@
     <link href="sticky-footer-navbar.css" rel="stylesheet">
   </head>
   <body class="d-flex flex-column h-100">
-    <header>
   <!-- Fixed navbar -->
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <header>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <a class="navbar-brand" href="#"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -36,12 +36,9 @@
         </li>
       </ul>
       <?php 
-              if (!isset($_SESSION{'login'}))
-              { ?>
-      <form class="form-inline mt-2 mt-md-0" action="index.php?action=login" method="POST">
-        <?php if(isset($_SESSION{'message'})){ ?>
-        <div class="form-control" ><p class="red"><?= $_SESSION['message'] ?></div>
-        <?php } ?>
+              if (!isset($_SESSION{'login'})):
+               ?>
+      <form class="form-inline mt-2 mt-md-0" action="index.php?action=login" method="POST">        
        <input class="form-control mr-sm-2" type="text" placeholder="Identifiant" id="username" name="username">
        <input class="form-control mr-sm-2" type="password" placeholder="Mot de passe" id="password" name="password">
         
@@ -49,39 +46,42 @@
       </form>
       </div>
       <?php 
-        }
-
-    else { ?>
+    else:  ?>
        
-        <ul class="navbar-nav mr-auto">
+        <ul class="nav navbar-right navbar-nav">
         <li class="nav-item active">
-          <a href="index.php?action=admin"><button type="button" class="btn btn-secondary">Panneau d'administration</button></a>
+          <a href="index.php?action=admin"><button type="button" class="btn btn-light">Administration</button></a>
         </li>
         <li class="nav-item active">
             <a href="index.php?action=logout"><button type="button" class="btn btn-xs btn-primary">Déconnexion</button></a>
         </li>
       </ul>
-      <?php
-      }
+      <?php 
+      endif;
       ?>
-
-
-
-  
-
   </nav>
-</header>
+  </header>
 
-
+  <?php if(isset($_SESSION['message'])): ?>
+        <div class="red" ><?= $_SESSION['message'] ?></div>
+   <?php 
+   unset($_SESSION['message']);
+ endif; ?>
+  <div class="main mt-6">
+    
         <?= $content ?>
+  </div>
 
   <footer class="footer mt-auto py-3">
   <div class="container">
     <span class="text-muted">Blog de Jean Forteroche</span>
   </div>
 </footer>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script type="public/blog.js"></script>
 </body>
 </html>

@@ -5,7 +5,6 @@ h1, h3
 h3
 {
     background-color:black;
-    color:#28a745;
     font-size:1.2em;
     margin-bottom:0px;
     border-radius: 25px;
@@ -51,4 +50,8 @@ p
 {
     color: #c9302c;
     font-weight: bold;
+}
+body
+{
+    color: white;
 }

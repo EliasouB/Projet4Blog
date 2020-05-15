@@ -12,6 +12,15 @@ class CommentManager extends Manager
         $comments->execute(array($postId));
 
         return $comments;
+    }    
+
+    public function getComment($id)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT * FROM comments WHERE id = ? ORDER BY comment_date DESC');
+        $req->execute(array($id));
+
+        return $req->fetch();
     }
 
     // Méthode qui ajoute un commentaire

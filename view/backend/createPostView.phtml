@@ -8,9 +8,11 @@ $withTinyMce = true; ?>
 	<h1>Panneau d'administration</h1>
 		<div id="managerBlock">
 			<div id="updateBlock">
-				<form action="index.php?action=admin" method="post">
+				
+				<div class="alert alert-dark" role="alert">Créer un chapitre</div>
+				<form action="index.php?action=createPost" method="post">
 					<label for="title">Titre : </label>
-					<input type="text" name="title" id="title" placeholder="Votre titre" size="60" /><br/>
+					<input type="text" name="title" id="title" placeholder="Titre du chapitre" size="60" /><br/>
 					<textarea class="tinymce" name="content" rows="20" cols="160"></textarea>
 					<input type="submit" value="Valider" />
 				</form>

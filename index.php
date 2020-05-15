@@ -1,42 +1,66 @@
 <?php
 session_start();
-require('controller/frontend.php');
-require('controller/backend.php');
+require('controller/FrontController.php');
+require('controller/BackController.php');
+
+
+$backController = new BackController();
+$frontController = new FrontController();
 
 try { // On essaie de faire des choses
 
     if (isset($_GET['action'])) {
         if($_GET['action'] == 'login'){
-                login();
+                $backController->login();
         }
         elseif($_GET['action'] == 'logout'){
-                logout();
-        }
-        elseif($_GET['action'] == 'updatePost'){
-                updatePost();   
+                $backController->logout();
         }
         elseif($_GET['action'] == 'createPost'){
-                CreatePost();       
+                $backController->createPost();       
         }
         elseif($_GET['action'] == 'deletePost'){
-                setDeletePost();       
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    $backController->setDeletePost($_GET['id']);       
+                }
+        }
+        elseif($_GET['action'] == 'deleteComment'){
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    $backController->setDeleteComment($_GET['id']);       
+                }
         }
         elseif ($_GET['action'] == 'updatePost') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
-                if (isset($_SESSION) && $_SESSION['message'] == '1') {
-                     changePost();
+                     $backController->changePost($_GET['id']);
                 }  
-            }    
-        }
+        }    
         elseif ($_GET['action'] == 'admin'){
-                adminIndex();       
+                $backController->adminIndex();    
         }
         elseif ($_GET['action'] == 'listPosts') {
-            listPosts();
+            $frontController->listPosts();
+        }
+        elseif ($_GET['action'] == 'reportComment') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                $frontController->reportComment($_GET['id']);
+            }
+            else {
+                // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch
+                throw new Exception('Aucun identifiant de commentaire');
+            }
+        }
+        elseif ($_GET['action'] == 'deleteReport') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                $backController->deleteReport($_GET['id']);
+            }
+            else {
+                // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch
+                throw new Exception('Aucun identifiant de commentaire');
+            }
         }
         elseif ($_GET['action'] == 'post') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
-                post();
+                $frontController->post();
             }
             else {
                 // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch
@@ -46,7 +70,7 @@ try { // On essaie de faire des choses
         elseif ($_GET['action'] == 'addComment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['author']) && !empty($_POST['comment'])) {
-                    addComment($_GET['id'], htmlspecialchars($_POST['author']), htmlspecialchars($_POST['comment']));
+                    $frontController->addComment($_GET['id'], htmlspecialchars($_POST['author']), htmlspecialchars($_POST['comment']));
                 }
                 else {
                     // Autre exception
@@ -60,10 +84,10 @@ try { // On essaie de faire des choses
         }
     }
     else {
-        listPosts();
+        $frontController->listPosts();
     }
 }
 catch(Exception $e) { // S'il y a eu une erreur, alors...
-   echo 'Erreur :' . $errorMessage = $e->getMessage();
+$frontController->error($e->getMessage());
     
 }

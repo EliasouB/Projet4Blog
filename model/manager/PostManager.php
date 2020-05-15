@@ -20,8 +20,17 @@ class PostManager extends Manager
         $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM chapters WHERE id = ?');
         $req->execute(array($postId));
         $post = $req->fetch();
+        if($post){            
+            $postObject = new Post();
+            $postObject->setId($post['id']);
+            $postObject->setTitle($post['title']);
+            $postObject->setCreationDate($post['creation_date_fr']);
+            $postObject->setContent($post['content']);
+        return $postObject;
+        }
 
-        return $post;
+        return null;
+
     }
 
     public function getCheckPost($postId)

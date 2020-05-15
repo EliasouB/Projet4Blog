@@ -8,6 +8,7 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
     <title><?= $title ?></title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/sticky-footer-navbar/">
@@ -43,8 +44,8 @@
     <?php else : ?>
             <ul class="nav navbar-right navbar-nav">
               <li><a href="index.php"><button class="btn btn-xs btn-info">Aperçu Blog</button></a></li>
+              <li><a href="index.php?action=admin"><button type="button" class="btn btn-light">Administration</button></a></li>
               <li><a href="index.php?action=createPost"><button type="button" class="btn btn-secondary">Créer un chapitre</button></a></li>
-              <li><a href=""><button type="button" class="btn btn-success">Voir Chapitres</button></a></li>
               <li><a href="index.php?action=logout"><button class="btn btn-xs btn-primary">Déconnexion</button></a></li>
               </ul>
           <?php endif; ?>
@@ -60,12 +61,14 @@
     <span class="text-muted">Blog de Jean Forteroche</span>
   </div>
 </footer>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <?php if (isset($withTinyMce) && $withTinyMce === true) : ?>
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 <script>tinymce.init({selector:'.tinymce'});</script>
+<script type="public/blog.js"></script>
 <?php endif; ?>
 
 </body>

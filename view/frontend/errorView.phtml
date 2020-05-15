@@ -1,31 +1,11 @@
-<!DOCTYPE html>
-<html>
+<?php $title = "Oups" ;?>
 
-<head>
+<?php ob_start(); ?>
+<h1>Mon super blog !</h1>
+<h1 class="right-align "><?= $message; ?></h1>
+<?php $content = ob_get_clean(); ?>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<?php require('template.php'); ?>
 
-    <title>Blog Jean Forteroche</title>
-    <meta name="description" content="Simple MVC Blog">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
-    <link rel="stylesheet" href="public/style.css">
-</head>
-<body>
-<div class="container">
-    <nav class="indigo lighten-3">
-        <div class="nav-wrapper">
-            <a href="#" class="brand-logo">Blog Jean Forteroche</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-            </ul>
-        </div>
-    </nav>
 
-    <div>
-        <h1 class="right-align ">Oups... Erreur 404 !!</h1>
-    </div>
 
-</div>
-
-</body>
