@@ -63,7 +63,8 @@ class BackController
             $content       = $_POST['content'];
             $adminManager  = new AdminManager();
             $affectedlines = $adminManager->updatePost($title, $content, $postId);
-            
+
+            $_SESSION['message'] = "Chapitre modifié";
             header('Location: index.php');
         }
         require('view/backend/updatePostView.phtml');
@@ -96,6 +97,7 @@ class BackController
         if ($affectedLines === false) {
             throw new Exception('Impossible de supprimer l\'article !');
         } else {
+            $_SESSION['message'] = "Chapitre supprimé";
             header('Location: index.php');
         }
     }
@@ -117,6 +119,7 @@ class BackController
             throw new Exception('Impossible de supprimer le commentaire !');
         } 
 
+        $_SESSION['message'] = "Commentaire supprimé";
         header('Location: index.php');
     }
     
@@ -130,7 +133,8 @@ class BackController
             throw new Exception('Impossible de supprimer le signalement !');
         } 
 
-        header('Location: index.php?action=admin');
+        $_SESSION['message'] = "Commentaire validé";
+        header('Location: index.php');
     }
     function logout()
     {

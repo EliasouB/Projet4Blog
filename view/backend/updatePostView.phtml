@@ -25,7 +25,7 @@ while ($comment = $comments->fetch())
     <p class="author"><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
     <p class="comments"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
 
-<a href="index.php?action=deleteComment&id=<?= $comment['id'] ?>"><button class="btn btn-danger">Supprimer le commentaire</button></a>
+<a href="index.php?action=deleteComment&id=<?= $comment['id'] ?>" class="btn btn-small btn-danger" data-toggle="tooltip" title="supprimer"><i class=" fas fa-check"></i></a> 
 
 <?php
 }

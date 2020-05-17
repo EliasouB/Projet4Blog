@@ -7,7 +7,7 @@ h3
     background-color:black;
     font-size:1.2em;
     margin-bottom:0px;
-    border-radius: 25px;
+    border-radius: 10px;
 }
 .news p
 {
@@ -35,7 +35,7 @@ em
 }
 p
 {
-    color: white;
+    color: black;
 }
 .comments, .author
 {

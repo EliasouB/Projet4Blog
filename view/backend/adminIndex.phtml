@@ -3,14 +3,12 @@ $title = "Bienvenue sur la partie Administrateur du blog de Jean Forteroche"; ?>
 
 <?php ob_start(); ?>
 
-<section id="createPost">
-	<h1>Panneau d'administration</h1>
-		<div id="managerBlock">
-			<p class="returnLink"></p>
-			<div id="updateBlock">
-				<h1>Bienvenue sur la partie Administrateur de votre Blog</h1>
-				<div class="alert alert-warning" role="alert">Commentaires signalés </div>
-				</div>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Bienvenue sur la partie administrateur de votre blog</h1>
+    <p class="lead">Commentaires signalés</p>
+  </div>
+</div>
 			
 <?php
 foreach ($reportComments as $report)
@@ -18,6 +16,7 @@ foreach ($reportComments as $report)
 ?>
 
   <p>
+
 		    	<span class="red">Signalé le <?= $report['reporting_date'] ?> :</span> 
 		    	<?= $report['comment'] ?> 
 		    	<a href="index.php?action=deleteComment&id=<?= $report['comment_id'] ?>" class="btn btn-small btn-danger" data-toggle="tooltip" title="supprimer">
