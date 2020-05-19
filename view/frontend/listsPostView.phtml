@@ -1,42 +1,35 @@
 <?php $title = 'Mon blog'; ?>
-
 <?php ob_start(); ?>
-
-  
 <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Billet simple pour l'Alaska</h1>
-    <p class="lead">Hello word, venez découvrir mes aventures au sein de mon blog .</p>
-  </div>
+    <div class="container">
+        <h1 class="display-4">Billet simple pour l'Alaska</h1>
+        <p class="lead">Hello word, venez découvrir mes aventures au sein de mon blog .</p>
+    </div>
 </div>
 <?php
-while ($data = $posts->fetch())
-{
-?>
-    <div class="news">
-        <h3>
-            <?= $data['title'] ?>
-            <em>le : <?= $data['creation_date_fr'] ?></em>
-        </h3>
-        
-        <p>
-            <?= mb_substr(nl2br($data['content']), 0, 700, 'utf-8') ?>
-            {...}
-                
-        </p> 
-        <div>
-            <a class="btn btn-outline-info" href="index.php?action=post&id=<?= $data['id'] ?>">Suite</a>
-                <?php if (isset($_SESSION['id'])): ?>
-                    <a class="btn btn-outline-success" href="index.php?action=updatePost&id=<?= $data['id'] ?>">Modifier</a>
-                    <a id="delete" class="btn btn-outline-danger" href="index.php?action=deletePost&id=<?= $data['id'] ?>">Supprimer</a>
-                <?php endif; ?>
-        </div>      
+    while ($data = $posts->fetch())
+    {
+    ?>
+<div class="news">
+    <h3>
+        <?= $data['title'] ?>
+        <em>le : <?= $data['creation_date_fr'] ?></em>
+    </h3>
+    <p>
+        <?= mb_substr(nl2br($data['content']), 0, 700, 'utf-8') ?>
+        {...}
+    </p>
+    <div>
+        <a class="btn btn-outline-info" href="index.php?action=post&id=<?= $data['id'] ?>">Suite</a>
+        <?php if (isset($_SESSION['id'])): ?>
+        <a class="btn btn-outline-success" href="index.php?action=updatePost&id=<?= $data['id'] ?>">Modifier</a>
+        <a class="btn btn-outline-danger" href="index.php?action=deletePost&id=<?= $data['id'] ?>">Supprimer</a>
+        <?php endif; ?>
     </div>
+</div>
 <?php
-}
-$posts->closeCursor(); // on libère le curseur pour la prochaine requête
-?>
+    }
+    $posts->closeCursor(); // on libère le curseur pour la prochaine requête
+    ?>
 <?php $content = ob_get_clean(); ?>
-
 <?php require('template.php'); ?>
-

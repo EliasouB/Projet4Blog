@@ -1,62 +1,49 @@
 <?php $title = $post->getTitle(); ?>
-
 <?php ob_start(); ?>
-
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <p class="lead">Découvrez mes aventures en Alaska dans ce chapitre</p>
+    </div>
+</div>
 <div class="news">
     <h3>
         <?= $post->getTitle(); ?>
         <em>le <?= $post->getCreationDate() ?></em>
     </h3>
-    
-    <p>
-        <?= $post->getContent() ?>
-    </p>
+    <?= $post->getContent() ?>
 </div>
-
 <!-- Dans cette vue, on affiche le chapitre (récupéré avec $post ) et les commentaires (récupérés dans$comments ). -->
-
 <!-- ... -->
-
-<h2>Commentaires</h2>
-
-<form action="index.php?action=addComment&id=<?= $post->getId(); ?>" method="post">
-    <div>
-        <label for="author">Nom</label><br />
-      <input type="text" class="form-control" name="author">
-    </div>
-    <div>
-       <label for="comment">Commentaire</label><br />
-      <textarea id="comment" name="comment" class="form-control"></textarea> 
-    </div>
-    <div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
-</form>
-
-
-<?php
-while ($comment = $comments->fetch())
-{
-?>
-
+<div class="container">
+<div class="jumbotron">
+    <h1 class="display-4">Les commentaires</h1>
+    <p class="lead">Laissez moi un commentaire pour me dire si vous avez appréciez ce chapitre</p>
+    <hr class="my-4">
+    <form action="index.php?action=addComment&id=<?= $post->getId(); ?>" method="post">
+        <div>
+            <label for="author">Nom</label><br />
+            <input type="text" id="author" class="form-control" name="author">
+        </div>
+        <div>
+            <label for="comment">Commentaire</label><br />
+            <textarea id="comment" name="comment" class="form-control"></textarea> 
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+        </div>
+    </form>
+    <?php
+        while ($comment = $comments->fetch())
+        {
+        ?>
     <p class="author"><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
-    <p class="comments"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
-<a href="index.php?action=reportComment&id=<?= $comment['id']?>" class="btn btn-warning">Signaler</a>
-
-<?php
-}
-?>
-
-<!-- Begin page content -->
-  <main role="main" class="flex-shrink-0">
-    <div class="container">
-      <h1 class="mt-5"><strong>Billet simple pour l'Alaska</strong></h1>
-
-    
-  
-
-    </div>
-  </main>
+    <p class="comments"><?= nl2br(htmlspecialchars($comment['comment'])) ?>
+        <a href="index.php?action=reportComment&id=<?= $comment['id']?>" class="btn btn-warning">Signaler</a>
+    </p>
+    <?php
+        }
+        ?>
+</div>
+</div>
 <?php $content = ob_get_clean(); ?>
-
 <?php require('template.php'); ?>

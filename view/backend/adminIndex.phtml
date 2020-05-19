@@ -1,41 +1,31 @@
 <?php 
-$title = "Bienvenue sur la partie Administrateur du blog de Jean Forteroche"; ?>
-
+    $title = "Bienvenue sur la partie Administrateur du blog de Jean Forteroche"; ?>
 <?php ob_start(); ?>
-
 <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Bienvenue sur la partie administrateur de votre blog</h1>
-    <p class="lead">Commentaires signalés</p>
-  </div>
+    <div class="container">
+        <h1 class="display-4">Bienvenue sur la partie administrateur de votre blog</h1>
+    </div>
 </div>
-			
-<?php
-foreach ($reportComments as $report)
-{
-?>
-
-  <p>
-
-		    	<span class="red">Signalé le <?= $report['reporting_date'] ?> :</span> 
-		    	<?= $report['comment'] ?> 
-		    	<a href="index.php?action=deleteComment&id=<?= $report['comment_id'] ?>" class="btn btn-small btn-danger" data-toggle="tooltip" title="supprimer">
-		    		<i class="fas fa-trash"></i>
-		    	</a> 
-		    	<a href="index.php?action=deleteReport&id=<?= $report['comment_id'] ?>" class="btn btn-small btn-success" data-toggle="tooltip" title="Autoriser">
-		    		<i class=" fas fa-check"></i>
-		    	</a> 
-		    </p>
-
-<?php
-} ?>
-
-
-			</div>
-		</div>
-</section>
-
-
+<div class="container">
+<div class="jumbotron">
+    <h2>Commentaires signalés </h2>
+    <hr class="my-4">
+    <?php
+        foreach ($reportComments as $report)
+        { ?>
+    <p>
+        <span class="red">Signalé le <?= $report['reporting_date'] ?> :</span> 
+        <?= $report['comment'] ?> 
+        <a href="index.php?action=deleteComment&id=<?= $report['comment_id'] ?>" class="btn btn-small btn-danger" data-toggle="tooltip" title="supprimer">
+        <i class="fas fa-trash"></i>
+        </a> 
+        <a href="index.php?action=deleteReport&id=<?= $report['comment_id'] ?>" class="btn btn-small btn-success" data-toggle="tooltip" title="Autoriser">
+        <i class=" fas fa-check"></i>
+        </a> 
+    </p>
+    <?php
+        } ?>
+</div>
+</div>
 <?php $content = ob_get_clean(); ?>
-
 <?php require('template.php'); ?>

@@ -1,39 +1,37 @@
 <?php 
-$title = "Modifier chapitre"; 
-$withTinyMce = true; ?>
+    $title = "Modifier chapitre"; 
+    $withTinyMce = true; ?>
 <?php ob_start(); ?>
 <section id="createPost">
-	<h1>Panneau d'administration</h1>
-		<div id="managerBlock">
-			<div class="alert alert-dark" role="alert">Modifier Chapitre</div>
-			<div id="updateBlock">
-				<form action="index.php?action=updatePost&id=<?= $post->getId(); ?>" method="post">
-					<label for="title">Titre : </label>
-					<input type="text" name="title" id="title" placeholder="Votre titre" size="80" value="<?= $post->getTitle(); ?>" /><br/>
-					<textarea class="tinymce" name="content" rows="40" cols="160"><?= $post->getContent(); ?></textarea>
-					<input type="submit" value="Poster" />
-				</form>
-			</div>
-		</div>
-		
-		<h2>Les Commentaires</h2>
-		<?php
-while ($comment = $comments->fetch())
-{
-?>
-
-    <p class="author"><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
-    <p class="comments"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
-
-<a href="index.php?action=deleteComment&id=<?= $comment['id'] ?>" class="btn btn-small btn-danger" data-toggle="tooltip" title="supprimer"><i class=" fas fa-check"></i></a> 
-
-<?php
-}
-?>
-
+    <h1>Panneau d'administration</h1>
+    <div id="managerBlock">
+        <div class="alert alert-dark" role="alert">Modifier Chapitre</div>
+        <div id="updateBlock">
+            <form action="index.php?action=updatePost&id=<?= $post->getId(); ?>" method="post">
+                <label for="title">Titre : </label>
+                <input type="text" name="title" id="title" placeholder="Votre titre" size="80" value="<?= $post->getTitle(); ?>" /><br/>
+                <textarea class="tinymce" name="content" rows="17" cols="160"><?= $post->getContent(); ?></textarea>
+                <input type="submit" value="Poster" />
+            </form>
+        </div>
+    </div>
+    <div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Suppression de Commentaires</h1>
+        <hr class="my-4">
+        <?php
+            while ($comment = $comments->fetch())
+            {
+            ?>
+        <p class="author"><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
+        <p class="comments"><?= nl2br(htmlspecialchars($comment['comment'])) ?>
+            <a href="index.php?action=deleteComment&id=<?= $comment['id'] ?>" class="btn btn-small btn-danger" data-toggle="tooltip" title="supprimer"><i class=" fas fa-check"></i></a> 
+        </p>
+        <?php
+            }
+            ?>
+    </div>
+    </div>
 </section>
-
-
 <?php $content = ob_get_clean(); ?>
-
 <?php require('template.php'); ?>

@@ -1,11 +1,8 @@
 <?php $title = "Oups" ;?>
 
 <?php ob_start(); ?>
-<h1>Mon super blog !</h1>
 <h1 class="right-align "><?= $message; ?></h1>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>
-
-
 

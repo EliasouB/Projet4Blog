@@ -46,7 +46,7 @@ class BackController
             $_SESSION['message'] = 'Vous devez remplir tous les champs';
             
         }
-        header('Location: index.php?action=admin');
+        header('Location: index.php');
     }
     
     
