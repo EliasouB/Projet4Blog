@@ -5,19 +5,25 @@
         <p class="lead">Découvrez mes aventures en Alaska dans ce chapitre</p>
     </div>
 </div>
-<div class="news">
-    <h3>
+
+<div class="container">
+<div class="jumbotron">
+    <h1>
         <?= $post->getTitle(); ?>
         <em>le <?= $post->getCreationDate() ?></em>
-    </h3>
-    <?= $post->getContent() ?>
+    </h1>
+    <hr class="my-4">
+        <?= $post->getContent() ?>
+
 </div>
-<!-- Dans cette vue, on affiche le chapitre (récupéré avec $post ) et les commentaires (récupérés dans$comments ). -->
+</div>
+
+
 <!-- ... -->
 <div class="container">
 <div class="jumbotron">
     <h1 class="display-4">Les commentaires</h1>
-    <p class="lead">Laissez moi un commentaire pour me dire si vous avez appréciez ce chapitre</p>
+    <p class="lead">Donnez votre impression en laissant un commentaire</p>
     <hr class="my-4">
     <form action="index.php?action=addComment&id=<?= $post->getId(); ?>" method="post">
         <div>

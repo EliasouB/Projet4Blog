@@ -30,11 +30,6 @@ class Post
 	private $content;
 
 	/**
-     * @var string
-     */
-	private $resume;
-
-	/**
      * @var datetime
      */
 	private $creation_date;
@@ -72,15 +67,7 @@ class Post
 		$this->content = $content;
 	}
 
-	/**
-	 * @param mixed $resume
-	 */
-	public function setResume ($resume)
-	{
-		$resume = substr($this->getContent(), 0, 200);
-		return $resume.'...';
-	}
-
+	
 	/**
 	 * @param mixed $creationDate
 	 */
@@ -122,14 +109,7 @@ class Post
 		return $this->content;
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getResume ()
-	{
-		return $this->resume;
-	}
-
+	
 	/**
 	 * @return datetime
 	 */

@@ -3,7 +3,7 @@
     $withTinyMce = true; ?>
 <?php ob_start(); ?>
 <section id="createPost">
-    <h1>Panneau d'administration</h1>
+    <h1>Modification de Chapitre</h1>
     <div id="managerBlock">
         <div class="alert alert-dark" role="alert">Modifier Chapitre</div>
         <div id="updateBlock">
@@ -11,13 +11,13 @@
                 <label for="title">Titre : </label>
                 <input type="text" name="title" id="title" placeholder="Votre titre" size="80" value="<?= $post->getTitle(); ?>" /><br/>
                 <textarea class="tinymce" name="content" rows="17" cols="160"><?= $post->getContent(); ?></textarea>
-                <input type="submit" value="Poster" />
+                <input type="submit" value="Modifier" />
             </form>
         </div>
     </div>
     <div class="container">
     <div class="jumbotron">
-        <h1 class="display-4">Suppression de Commentaires</h1>
+        <h1 class="display-5">Suppression de Commentaires</h1>
         <hr class="my-4">
         <?php
             while ($comment = $comments->fetch())
