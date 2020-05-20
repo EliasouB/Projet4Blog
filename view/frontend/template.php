@@ -49,7 +49,7 @@
                     ?>
             </nav>
             <?php if(isset($_SESSION['message'])): ?>
-            <div class="red" ><?= $_SESSION['message'] ?></div>
+            <div class="alert alert-success" role="alert"><?= $_SESSION['message'] ?></div>
             <?php unset($_SESSION['message']); endif; ?>
             <?= $content ?>
         </header>
