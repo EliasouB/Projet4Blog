@@ -1,11 +1,9 @@
 <?php
-
-require_once("Manager.php");
+namespace Blog\Model\Manager;
 
 class CommentManager extends Manager
 {
-    // Méthode qui récupère les commentaires d'un Post
-    public function getComments($postId)
+    public function getComments($postId) // Méthode qui récupère les commentaires d'un Post
     {
         $db = $this->dbConnect();
         $comments = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE post_id = ? ORDER BY comment_date DESC');
@@ -14,7 +12,7 @@ class CommentManager extends Manager
         return $comments;
     }    
 
-    public function getComment($id)
+    public function getComment($id) // Méthode qui récupère le commentaires d'un Post
     {
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT * FROM comments WHERE id = ? ORDER BY comment_date DESC');
@@ -23,8 +21,7 @@ class CommentManager extends Manager
         return $req->fetch();
     }
 
-    // Méthode qui ajoute un commentaire
-    public function postComment($postId, $author, $comment)
+    public function postComment($postId, $author, $comment) // Méthode qui ajoute un commentaire
     {
         $db = $this->dbConnect();
         $comments = $db->prepare('INSERT INTO comments(post_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())');
@@ -33,8 +30,7 @@ class CommentManager extends Manager
         return $affectedLines;
     }
 
-    // Méthode qui ajoute le signalement d'un commentaire
-    public function postReport($commentId)
+    public function postReport($commentId) // Méthode qui ajoute le signalement d'un commentaire
     {
         $db = $this->dbConnect();
         $comments = $db->prepare('INSERT INTO report(comment_id, reporting_date) VALUES(?, NOW())');

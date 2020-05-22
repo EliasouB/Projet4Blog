@@ -1,0 +1,15 @@
+{
+    "name": "eliasoub/projet4blog",
+    "description": "Projet 4 OC DWJ",
+    "type": "project",
+    "authors": [
+        {
+            "name": "EliasouB",
+            "email": "elias.bouabdellah@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"Blog\\": ""}
+    },
+    "require": {}
+}

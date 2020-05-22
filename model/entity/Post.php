@@ -1,5 +1,6 @@
 <?php
 
+namespace Blog\Model\Entity;
 
 
 /**

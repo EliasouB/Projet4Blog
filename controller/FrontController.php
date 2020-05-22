@@ -1,11 +1,8 @@
 <?php
+namespace Blog\Controller;
 
-// Chargement des classes
-require_once('model/manager/PostManager.php');
-require_once('model/manager/CommentManager.php');
-require_once('model/entity/Post.php');
-require_once('model/manager/AdminManager.php');
-
+use Blog\Model\Manager\PostManager;
+use Blog\Model\Manager\CommentManager;
 
 class FrontController
 {
@@ -25,7 +22,7 @@ class FrontController
         
         $post = $postManager->getPost($_GET['id']);
         if ($post === null) {
-            throw new Exception("Cet article n'existe pas");
+            throw new \Exception("Cet article n'existe pas");
         }
         
         $comments = $commentManager->getComments($_GET['id']);
@@ -40,7 +37,7 @@ class FrontController
         $affectedLines = $commentManager->postComment($postId, $author, $comment);
         
         if ($affectedLines === false) {
-            throw new Exception('Impossible d\'ajouter le commentaire !');
+            throw new \Exception('Impossible d\'ajouter le commentaire !');
         } else {
             header('Location: index.php?action=post&id=' . $postId);
         }
@@ -57,12 +54,12 @@ class FrontController
         $comment = $commentManager->getComment($commentId);
 
         if(!$comment){
-                throw new Exception('Impossible de signaler le commentaire !');
+                throw new \Exception('Impossible de signaler le commentaire !');
         }
         // TODO recuperer postId à partir du commentaire en base de données
         $affectedLines  = $commentManager->postReport($commentId);
         if ($affectedLines === false) {
-            throw new Exception('Impossible de signaler le commentaire !');
+            throw new \Exception('Impossible de signaler le commentaire !');
         } else {
 
             $_SESSION['message'] = "Commentaire signalé";

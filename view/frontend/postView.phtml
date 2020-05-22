@@ -1,57 +1,46 @@
 <?php $title = $post->getTitle(); ?>
 <?php ob_start(); ?>
-
-
-<div class="jumbotron jumbotron-fluid">
-    <div class="container">
-            <p class="lead">Découverte de l'Alaska au sein de ce chapitre</p>
-    </div>
-</div>
-
 <div class="container">
-<div class="jumbotron">
-    <h1>
-        <?= $post->getTitle(); ?>
-        <em>le <?= $post->getCreationDate() ?></em>
-    </h1>
-    <hr class="my-4">
-        <?= $post->getContent() ?>
-
+   <div class="jumbotron">
+      <h1>
+         <?= $post->getTitle(); ?>
+         <em>le <?= $post->getCreationDate() ?></em>
+      </h1>
+      <hr class="my-4">
+      <?= $post->getContent() ?>
+   </div>
 </div>
-</div>
-
-
 <!-- ... -->
 <div class="container">
-<div class="jumbotron">
-    <h1 class="display-4">Les commentaires</h1>
-    <p class="lead">Donnez votre impression en laissant un commentaire</p>
-    <hr class="my-4">
-    <form action="index.php?action=addComment&id=<?= $post->getId(); ?>" method="post">
-        <div>
+   <div class="jumbotron">
+      <h1 class="display-4">Les commentaires</h1>
+      <p class="lead">Donnez votre impression en laissant un commentaire</p>
+      <hr class="my-4">
+      <form action="index.php?action=addComment&id=<?= $post->getId(); ?>" method="post">
+         <div>
             <label for="author">Nom</label><br />
             <input type="text" id="author" class="form-control" name="author">
-        </div>
-        <div>
+         </div>
+         <div>
             <label for="comment">Commentaire</label><br />
             <textarea id="comment" name="comment" class="form-control"></textarea> 
-        </div>
-        <div>
+         </div>
+         <div>
             <button type="submit" class="btn btn-primary">Envoyer</button>
-        </div>
-    </form>
-    <?php
-        while ($comment = $comments->fetch())
-        {
-        ?>
-    <p class="author"><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
-    <p class="comments"><?= nl2br(htmlspecialchars($comment['comment'])) ?>
-        <a href="index.php?action=reportComment&id=<?= $comment['id']?>" class="btn btn-warning">Signaler</a>
-    </p>
-    <?php
-        }
-        ?>
-</div>
+         </div>
+      </form>
+      <?php
+         while ($comment = $comments->fetch())
+         {
+         ?>
+      <p class="author"><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
+      <p class="comments"><?= nl2br(htmlspecialchars($comment['comment'])) ?>
+         <a href="index.php?action=reportComment&id=<?= $comment['id']?>" class="btn btn-warning">Signaler</a>
+      </p>
+      <?php
+         }
+         ?>
+   </div>
 </div>
 <?php $content = ob_get_clean(); ?>
 <?php require('template.php'); ?>

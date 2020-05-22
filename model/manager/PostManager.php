@@ -1,11 +1,11 @@
 <?php
+namespace Blog\Model\Manager;
 
-require_once("Manager.php");
+use Blog\Model\Entity\Post;
 
 class PostManager extends Manager
 { 
-    // Méthode qui récupere tous les Posts
-    public function getPosts()
+    public function getPosts() // Méthode qui récupere tous les Posts
     {
         $db = $this->dbConnect();
         $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM chapters ORDER BY creation_date DESC LIMIT 0, 5');
@@ -13,8 +13,7 @@ class PostManager extends Manager
         return $req;
     }
 
-    // Méthode qui récupère un Post 
-    public function getPost($postId)
+    public function getPost($postId) // Méthode qui récupère un Post 
     {
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM chapters WHERE id = ?');

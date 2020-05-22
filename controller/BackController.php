@@ -1,10 +1,12 @@
 <?php
+namespace Blog\Controller;
 
-// Chargement des classes
-require_once('model/manager/PostManager.php');
-require_once('model/manager/CommentManager.php');
-require_once('model/entity/Post.php');
-require_once('model/manager/AdminManager.php');
+
+use Blog\Model\Manager\AdminManager;
+
+use Blog\Model\Manager\CommentManager;
+use Blog\Model\Manager\PostManager;
+
 
 
 
@@ -95,7 +97,7 @@ class BackController
         $affectedlines = $adminManager->deletePost($postId);
         
         if ($affectedLines === false) {
-            throw new Exception('Impossible de supprimer l\'article !');
+            throw new \Exception('Impossible de supprimer l\'article !');
         } else {
             $_SESSION['message'] = "Chapitre supprimé";
             header('Location: index.php');
@@ -116,7 +118,7 @@ class BackController
         $affectedlines = $adminManager->deleteComment($commentId);
         
         if ($affectedLines === false) {
-            throw new Exception('Impossible de supprimer le commentaire !');
+            throw new \Exception('Impossible de supprimer le commentaire !');
         } 
 
         $_SESSION['message'] = "Commentaire supprimé";
@@ -130,7 +132,7 @@ class BackController
         $affectedlines = $adminManager->deleteReports($commentId);
         
         if ($affectedLines === false) {
-            throw new Exception('Impossible de supprimer le signalement !');
+            throw new \Exception('Impossible de supprimer le signalement !');
         } 
 
         $_SESSION['message'] = "Commentaire validé";
