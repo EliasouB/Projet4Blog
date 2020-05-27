@@ -8,8 +8,6 @@ use Blog\Model\Manager\CommentManager;
 use Blog\Model\Manager\PostManager;
 
 
-
-
 class BackController
 {
     
@@ -20,7 +18,7 @@ class BackController
             
         }
     }
-    function login()
+    function login() // Connexion à la partie administrateur
     {
         if (isset($_POST['password']) && isset($_POST['username']) && $_POST['username'] != '' && $_POST['password'] != '') {
             $login        = $_POST['username'];
@@ -33,7 +31,7 @@ class BackController
                 $_SESSION['message'] = 'Mauvais identifiant ou mot de passe !';
             } else {
                 
-                $isPasswordCorrect = password_verify($pass, $loginAdmin['pass']);
+                $isPasswordCorrect = password_verify($pass, $loginAdmin['pass']); // Vérifie que le mdp correspond au hachage
                 if ($isPasswordCorrect) {
                     $_SESSION['id']    = $loginAdmin['id'];
                     $_SESSION['login'] = $loginAdmin;
@@ -51,7 +49,7 @@ class BackController
         header('Location: index.php');
     }
     
-    
+    // Modifier chapitre 
     function changePost($postId)
     {
         $this->checkAuthentification();
@@ -72,6 +70,7 @@ class BackController
         require('view/backend/updatePostView.phtml');
     }
     
+    // Créer un nouveau chapitre
     function createPost()
     {
         $this->checkAuthentification();
@@ -89,7 +88,7 @@ class BackController
         require('view/backend/createPostView.phtml');
     }
     
-    
+    // Supprimer un chapitre
     function setDeletePost($postId)
     {
         $this->checkAuthentification();
@@ -103,6 +102,8 @@ class BackController
             header('Location: index.php');
         }
     }
+
+    // Afficher page d'accueil de l'administration
     function adminIndex()
     {
         
@@ -111,6 +112,8 @@ class BackController
         
         require('view/backend/adminIndex.phtml');
     }
+
+    // Supprimer un commentaire
     function setDeleteComment($commentId)
     {
         $this->checkAuthentification();
@@ -125,6 +128,7 @@ class BackController
         header('Location: index.php');
     }
     
+    // Supprimer le signalement d'un commentaire
     function deleteReport($commentId)
     {
         $this->checkAuthentification();
@@ -138,6 +142,8 @@ class BackController
         $_SESSION['message'] = "Commentaire validé";
         header('Location: index.php');
     }
+
+    // Déconnexion
     function logout()
     {
         $_SESSION = array();

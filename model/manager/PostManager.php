@@ -31,14 +31,5 @@ class PostManager extends Manager
         return null;
 
     }
-
-    public function getCheckPost($postId)
-    {
-        $db = $this->dbConnect();
-        $req = $db->prepare('SELECT exists (SELECT * FROM chapters WHERE id = ?) AS post_exist');
-        $req->execute(array($postId));
-        $check = $req->fetch();
-        return $check;
-    }
 }
 

@@ -6,7 +6,7 @@ use Blog\Model\Manager\CommentManager;
 
 class FrontController
 {
-    
+    // Afficher les chapitres
     function listPosts()
     {
         $postManager = new PostManager(); // Création d'un objet
@@ -15,6 +15,7 @@ class FrontController
         require('view/frontend/listsPostView.phtml');
     }
     
+    // Afficher un chapitre
     function post()
     {
         $postManager    = new PostManager();
@@ -30,6 +31,7 @@ class FrontController
         require('view/frontend/postView.phtml');
     }
     
+    // Ajouter un commentaire
     function addComment($postId, $author, $comment)
     {
         $commentManager = new CommentManager();
@@ -43,11 +45,13 @@ class FrontController
         }
     }
     
+    // Afficher erroView lorsqu'il y a un erreur
     function error($message)
     {
         require('view/frontend/errorView.phtml');
     }
     
+    // Signaler le commentaire
     function reportComment($commentId)
     {
         $commentManager = new CommentManager();
